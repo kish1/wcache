@@ -3,6 +3,8 @@ An implementation of an LFU web cache in Python.
 
 # Example
 
+**The following code uses the cache with a write-behind policy to enhance performance.**
+
 ```python
 # A daemon that keeps persisting the cache to disk at the given frequency in seconds
 def write_to_persistence(frequency):
