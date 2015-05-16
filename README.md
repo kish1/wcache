@@ -39,6 +39,7 @@ if __name__ == '__main__':
 	terminate_wb = False
 
 	# commit frequency(seconds)
+	# daemon executes every 5 minutes and persists to disk.
 	commit_frequency = 5*60
 
 	wb_daemon = threading.Thread(target=write_to_persistence, args=(commit_frequency,))
