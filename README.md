@@ -1,5 +1,5 @@
 # wcache
-An implementation of an LFU web cache in Python.
+An implementation of an LRU web cache in Python.
 
 # Example
 
@@ -29,15 +29,15 @@ def get(path):
 if __name__ == '__main__':
 	import threading
 	import wcache
-	
+
 	global web_cache, cache_lock, terminate_wb
-	
+
 	# wcache(size_in_bytes, origin_server, persistence_file_name)
 	# 16 MB cache
 	web_cache = wcache.cache(16*(2**20), 'www.originserver.com', 'cache_data.txt')
 
 	cache_lock = threading.Lock()
-	
+
 	terminate_wb = False
 
 	# commit frequency(seconds)
@@ -46,7 +46,7 @@ if __name__ == '__main__':
 
 	wb_daemon = threading.Thread(target=write_to_persistence, args=(commit_frequency,))
 	wb_daemon.start()
-	
+
 	path = None
 	while True:
 		path = input('Enter a URL:')
